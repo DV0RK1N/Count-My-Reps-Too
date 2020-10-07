@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Count My Reps</string>
+    <string name="name_that_exercise">Name that Exercise</string>
+    <string name="time_zero">00:00</string>
+    <string name="toolbar_set_name">Set Name</string>
+    <string name="go_to_workout">Go to Workout</string>
+    <string name="go_back_from_workout">Go Back</string>
+    <string name="exercise_weight">Add Weight</string>
+    <string name="timer_clear_countdown">Clear Countdown</string>
+    <string name="delete_all_exercises">Delete All Exercises</string>
+</resources>
