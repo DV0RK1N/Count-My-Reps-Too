@@ -8,4 +8,6 @@
     <string name="exercise_weight">Add Weight</string>
     <string name="timer_clear_countdown">Clear Countdown</string>
     <string name="delete_all_exercises">Delete All Exercises</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

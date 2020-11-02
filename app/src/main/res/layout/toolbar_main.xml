@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
-    android:background="@color/colorPrimary"
+    android:background="@color/colorPrimaryDark"
     android:elevation="4dp"
     app:titleTextColor="@android:color/white"
     tools:viewBindingIgnore="true">
@@ -18,8 +18,8 @@
         android:gravity="center_vertical"
         android:paddingStart="8dp"
         android:paddingEnd="8dp"
-        android:text="Set Name"
-        android:textColor="@android:color/white"
+        android:text="Enter Workout Name"
+        android:textColor="@color/colorPrimary"
         android:textSize="24sp"
         android:visibility="visible" />
 
@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:focusableInTouchMode="true"
         android:gravity="center_vertical"
-        android:hint="Enter Your Name Name"
+        android:hint="Enter Workout Name"
         android:imeOptions="actionDone"
         android:importantForAutofill="no"
         android:inputType="textPersonName"
