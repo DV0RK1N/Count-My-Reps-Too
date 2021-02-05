@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActivityStopwatch">
+    tools:context=".StopwatchActivity">
 
     <TextView
         android:id="@+id/textView14"
@@ -77,7 +77,7 @@
             android:gravity="center"
             android:text="00"
             android:textSize="50dp"
-            android:transitionName="stopwatch_millis"/>
+            android:transitionName="stopwatch_millis" />
     </LinearLayout>
 
     <Button
@@ -87,6 +87,7 @@
         android:layout_marginStart="75dp"
         android:layout_marginBottom="100dp"
         android:text="Stop"
+        android:onClick="stopStopwatch"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -107,7 +108,70 @@
         app:layout_constraintBottom_toTopOf="@+id/button_stop_stopwatch"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout5" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout4"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+
+        <TextView
+            android:id="@+id/textView_stopwatch_minutes_activity_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="00"
+            android:textSize="15sp"
+            android:transitionName="stopwatch_minutes" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:text=":"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/textView_stopwatch_seconds_activity_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="00"
+            android:textSize="15sp"
+            android:transitionName="stopwatch_minutes" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:text=":"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/textView_stopwatch_millis_activity_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="00"
+            android:textSize="15sp"
+            android:transitionName="stopwatch_minutes" />
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

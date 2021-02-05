@@ -43,25 +43,27 @@
 
     <TextView
         android:id="@+id/text_view_set_number"
-        android:layout_width="150dp"
-        android:layout_height="0dp"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
         android:gravity="center"
         android:text="1"
         android:textColor="@android:color/white"
-        android:textSize="150sp"
+        android:textSize="90sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_main" />
 
     <Button
         android:id="@+id/button_next_set"
-        android:layout_width="0dp"
+        android:layout_width="312dp"
         android:layout_height="0dp"
         android:text="Next Set"
-        android:textSize="40sp"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="@+id/text_view_set_number"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/text_view_set_number"
-        app:layout_constraintTop_toBottomOf="@+id/edit_text_name_that_exercise" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_name_that_exercise"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/button_save_exercise"
