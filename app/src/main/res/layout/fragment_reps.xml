@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+    android:background="#F17B58"
     tools:context=".RepsFragment">
 
     <TextView
@@ -23,42 +24,39 @@
         android:layout_width="132dp"
         android:layout_height="0dp"
         android:gravity="center"
-        android:text="0"
-        android:textColor="@android:color/white"
         android:maxLength="6"
         android:maxLines="1"
+        android:text="0"
+        android:textColor="@android:color/white"
         android:textSize="25sp"
         app:autoSizeMaxTextSize="50sp"
         app:autoSizeMinTextSize="12sp"
         app:autoSizeStepGranularity="2sp"
         app:autoSizeTextType="uniform"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/textView_reps_name"
-        app:layout_constraintStart_toStartOf="@+id/textView_reps_name"
-        app:layout_constraintTop_toBottomOf="@+id/textView_reps_name"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintBottom_toTopOf="@+id/button_add_one_rep"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView_reps_name"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button_add_one_rep"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="48dp"
         android:text="+"
         app:layout_constraintBottom_toTopOf="@+id/button_subtract_one_rep"
         app:layout_constraintEnd_toStartOf="@+id/button_set_reps"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toEndOf="@+id/textView_current_reps"
-        app:layout_constraintTop_toTopOf="@+id/textView_current_reps"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_reps_name"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <Button
         android:id="@+id/button_subtract_one_rep"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:text="-"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button_reset_reps"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toEndOf="@+id/textView_current_reps"
+        app:layout_constraintEnd_toEndOf="@+id/button_add_one_rep"
+        app:layout_constraintStart_toStartOf="@+id/button_add_one_rep"
         app:layout_constraintTop_toBottomOf="@+id/button_add_one_rep" />
 
     <Button
@@ -66,7 +64,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Set Reps"
-        app:layout_constraintBottom_toTopOf="@+id/button_reset_reps"
+        app:layout_constraintBottom_toBottomOf="@+id/button_add_one_rep"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/button_add_one_rep"
@@ -77,10 +75,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Reset"
-        app:layout_constraintBottom_toBottomOf="@+id/button_subtract_one_rep"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/button_subtract_one_rep"
+        app:layout_constraintEnd_toEndOf="@+id/button_set_reps"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/button_set_reps"
         app:layout_constraintTop_toBottomOf="@+id/button_set_reps" />
 
     <EditText
@@ -89,13 +86,13 @@
         android:layout_height="0dp"
         android:background="@android:color/white"
         android:ems="10"
+        android:gravity="center"
+        android:hint="Set Reps"
         android:inputType="numberDecimal"
         android:maxLength="6"
-        android:hint="Set Reps"
-        android:gravity="center"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/button_set_reps"
         app:layout_constraintEnd_toEndOf="@+id/button_set_reps"
-        app:layout_constraintStart_toStartOf="@+id/button_set_reps"
+        app:layout_constraintStart_toEndOf="@+id/button_add_one_rep"
         app:layout_constraintTop_toTopOf="@+id/button_set_reps" />
 </androidx.constraintlayout.widget.ConstraintLayout>

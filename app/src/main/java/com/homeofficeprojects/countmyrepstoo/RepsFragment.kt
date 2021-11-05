@@ -9,16 +9,19 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.core.content.ContextCompat.getSystemService
-import kotlinx.android.synthetic.main.fragment_reps.*
-import kotlinx.android.synthetic.main.fragment_reps.view.*
-import kotlinx.android.synthetic.main.toolbar_main.*
+import com.homeofficeprojects.countmyrepstoo.databinding.FragmentRepsBinding
 
 
 class RepsFragment : Fragment() {
+    private var _binding: FragmentRepsBinding ?= null
+
+    private val binding
+        get() = _binding!!
 
     var rep = 0
     private lateinit var contextForRepsFragment: Context
     private lateinit var imm: InputMethodManager
+
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -29,28 +32,32 @@ class RepsFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_reps, container, false)
+    ): View {
+        _binding = FragmentRepsBinding.inflate(inflater, container, false)
+        val view = binding.root
         imm =
             activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        view.button_add_one_rep.setOnClickListener {
-            addRep(view)
+        binding.apply {
+            buttonAddOneRep.setOnClickListener {
+                addRep(view)
+            }
+            buttonSubtractOneRep.setOnClickListener {
+                subtractRep(view)
+            }
+            buttonResetReps.setOnClickListener {
+                setRepsToZero(view)
+            }
+            buttonSetReps.setOnClickListener {
+                openSetReps(view)
+                editTextSetReps.requestFocus()
+            }
         }
-        view.button_subtract_one_rep.setOnClickListener {
-            subtractRep(view)
-        }
-        view.button_reset_reps.setOnClickListener {
-            setRepsToZero(view)
-        }
-        view.button_set_reps.setOnClickListener {
-            openSetReps(view)
-            view.edit_text_set_reps.requestFocus()
-
-        }
-
         return view
+    }
 
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun addRep(view: View) {
@@ -64,21 +71,27 @@ class RepsFragment : Fragment() {
     }
 
     private fun openSetReps(view: View) {
-        view.button_set_reps.visibility = View.INVISIBLE
-        view.edit_text_set_reps.apply {
-            visibility = View.VISIBLE
-            setOnFocusChangeListener { v, hasFocus ->
-                if (hasFocus) {
-                    Toast.makeText(contextForRepsFragment, "Set number of Reps", Toast.LENGTH_SHORT)
-                        .show()
-                    imm.showSoftInput(view.edit_text_set_reps, InputMethodManager.SHOW_IMPLICIT)
-                } else {
-                    imm.hideSoftInputFromWindow(view.windowToken, 0)
-                    view.button_set_reps.visibility = View.VISIBLE
-                    visibility = View.INVISIBLE
-                    getRep(view)
-                    rep = view.edit_text_set_reps.text.toString().toInt()
-                    returnRep(rep, view)
+        binding.apply {
+            buttonSetReps.visibility = View.INVISIBLE
+            editTextSetReps.apply {
+                visibility = View.VISIBLE
+                setOnFocusChangeListener { v, hasFocus ->
+                    if (hasFocus) {
+                        Toast.makeText(
+                            contextForRepsFragment,
+                            "Set number of Reps",
+                            Toast.LENGTH_SHORT
+                        )
+                            .show()
+                        imm.showSoftInput(editTextSetReps, InputMethodManager.SHOW_IMPLICIT)
+                    } else {
+                        imm.hideSoftInputFromWindow(view.windowToken, 0)
+                        editTextSetReps.visibility = View.VISIBLE
+                        visibility = View.INVISIBLE
+                        getRep(view)
+                        rep = editTextSetReps.text.toString().toInt()
+                        returnRep(rep, view)
+                    }
                 }
             }
         }
@@ -91,11 +104,11 @@ class RepsFragment : Fragment() {
     }
 
     private fun getRep(view: View): Int {
-        return view.textView_current_reps.text.toString().toInt()
+        return binding.textViewCurrentReps.text.toString().toInt()
     }
 
     private fun returnRep(rep: Int, view: View) {
-        view.textView_current_reps.text = rep.toString()
+        binding.textViewCurrentReps.text = rep.toString()
     }
 
 

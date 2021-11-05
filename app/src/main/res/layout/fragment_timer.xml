@@ -25,13 +25,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9">
 
-
-        <TextView
-            android:id="@+id/textView_timer_minutes_fragment"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="00"
-            android:textSize="60sp" />
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hours" />
+
+            <NumberPicker
+                android:id="@+id/time_picker_hour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:transitionName="timer_hours"/>
+
+        </LinearLayout>
+
 
         <TextView
             android:id="@+id/textView4"
@@ -43,12 +54,23 @@
             android:text=":"
             android:textSize="40sp" />
 
-        <TextView
-            android:id="@+id/textView_timer_seconds_fragment"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="00"
-            android:textSize="60sp" />
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Minutes" />
+
+            <NumberPicker
+                android:id="@+id/time_picker_minute"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:transitionName="timer_minutes"/>
+        </LinearLayout>
+
 
         <TextView
             android:id="@+id/textView5"
@@ -60,12 +82,23 @@
             android:text=":"
             android:textSize="40sp" />
 
-        <TextView
-            android:id="@+id/textView_timer_millis_fragment"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="00"
-            android:textSize="60sp" />
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Seconds" />
+
+            <NumberPicker
+                android:id="@+id/time_picker_second"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:transitionName="timer_seconds"/>
+        </LinearLayout>
+
     </LinearLayout>
 
     <Button
@@ -76,7 +109,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button_reset_timer_fragment"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/button_reset_timer_fragment"

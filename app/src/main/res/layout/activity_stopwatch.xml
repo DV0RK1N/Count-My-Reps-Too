@@ -10,8 +10,8 @@
         android:id="@+id/textView14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="16dp"
-        android:text="TIMER"
+        android:layout_marginTop="16dp"
+        android:text="StopWatch"
         android:textSize="50sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,7 +38,7 @@
             android:transitionName="stopwatch_minutes" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/column_between_minutes_hours"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -46,16 +46,16 @@
             android:paddingStart="4dp"
             android:paddingEnd="4dp"
             android:text=":"
-            android:textSize="50dp" />
+            android:textSize="50sp" />
 
         <TextView
-            android:id="@+id/textView_stopwatch_second_activity"
+            android:id="@+id/textView_stopwatch_seconds_activity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
             android:text="00"
-            android:textSize="50dp"
+            android:textSize="50sp"
             android:transitionName="stopwatch_seconds" />
 
         <TextView
@@ -98,6 +98,7 @@
         android:layout_marginEnd="75dp"
         android:layout_marginBottom="100dp"
         android:text="Lap"
+        android:onClick="nextLap"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -127,8 +128,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="00"
-            android:textSize="15sp"
-            android:transitionName="stopwatch_minutes" />
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/textView6"
@@ -149,7 +149,7 @@
             android:gravity="center"
             android:text="00"
             android:textSize="15sp"
-            android:transitionName="stopwatch_minutes" />
+            />
 
         <TextView
             android:id="@+id/textView7"
@@ -170,8 +170,19 @@
             android:gravity="center"
             android:text="00"
             android:textSize="15sp"
-            android:transitionName="stopwatch_minutes" />
+            />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/temp_start_timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:text="Start"
+        android:onClick="tempStartTime"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

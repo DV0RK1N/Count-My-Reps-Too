@@ -1,55 +1,91 @@
 package com.homeofficeprojects.countmyrepstoo
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.transition.Fade
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewTreeObserver
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.util.Pair
-import kotlinx.android.synthetic.main.fragment_stopwatch.view.*
+import com.homeofficeprojects.countmyrepstoo.databinding.FragmentStopwatchBinding
 
 
 class StopwatchFragment : Fragment() {
+    private var _binding: FragmentStopwatchBinding? = null
+    private val binding
+        get() = _binding!!
 
-    lateinit var minutesTextView: TextView
-    lateinit var secondsTextView: TextView
-    lateinit var millisTextView: TextView
+    private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_stopwatch, container, false)
-
+    ): View {
+        _binding = FragmentStopwatchBinding.inflate(inflater, container, false)
+        val view = binding.root
         val fade = Fade()
 
+        sharedPreferences = requireActivity().getSharedPreferences(
+            AppConstants.SHARED_PREFS,
+            AppCompatActivity.MODE_PRIVATE
+        )
+        binding.apply {
+            textViewStopwatchMinutesFragment.text =
+                sharedPreferences.getString(AppConstants.STOPWATCH_MINUTES, "00")
+            textViewStopwatchSecondsFragment.text =
+                sharedPreferences.getString(AppConstants.STOPWATCH_SECONDS, "00")
+            textViewStopwatchMillisFragment.text =
+                sharedPreferences.getString(AppConstants.STOPWATCH_MILLIS, "00")
+        }
         activity?.title = "Fragment Stopwatch"
-
-        minutesTextView = view.textView_stopwatch_minutes_fragment
-        secondsTextView = view.textView_stopwatch_seconds_fragment
-        millisTextView = view.textView_stopwatch_millis_fragment
-        view.button_start_stopwatch_fragment.setOnClickListener {
+        binding.buttonStartStopwatchFragment.setOnClickListener {
             startStopwatchActivity()
         }
 
         activity?.window?.enterTransition = fade
         activity?.window?.exitTransition = fade
+
+        view.viewTreeObserver.addOnPreDrawListener(object : ViewTreeObserver.OnPreDrawListener {
+            override fun onPreDraw(): Boolean {
+                view.viewTreeObserver.removeOnPreDrawListener(this)
+                activity!!.startPostponedEnterTransition()
+                return true
+            }
+        })
         return view
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun startStopwatchActivity() {
         val intent = Intent(activity, StopwatchActivity::class.java)
-        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
-            activity!!,
-            Pair.create(minutesTextView, minutesTextView.transitionName),
-            Pair.create(secondsTextView, secondsTextView.transitionName),
-            Pair.create(millisTextView, millisTextView.transitionName)
-        )
-
-        startActivity(intent, options.toBundle())
+        binding.apply {
+            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                requireActivity(),
+                Pair.create(
+                    textViewStopwatchMinutesFragment,
+                    textViewStopwatchMinutesFragment.transitionName
+                ),
+                Pair.create(
+                    textViewStopwatchSecondsFragment,
+                    textViewStopwatchSecondsFragment.transitionName
+                ),
+                Pair.create(
+                    textViewStopwatchMillisFragment,
+                    textViewStopwatchMillisFragment.transitionName
+                )
+            )
+            startActivity(intent, options.toBundle())
+        }
     }
 }

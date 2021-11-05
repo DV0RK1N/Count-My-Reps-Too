@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/colorPrimary"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
@@ -28,14 +27,13 @@
         android:id="@+id/edit_text_name_that_exercise"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:autofillHints=""
         android:background="@android:color/white"
         android:elevation="4dp"
         android:ems="10"
         android:gravity="center"
         android:hint="@string/name_that_exercise"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
-        android:text="@={exerciseViewModel.exerciseName}"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/text_view_set_number"
@@ -44,23 +42,22 @@
     <TextView
         android:id="@+id/text_view_set_number"
         android:layout_width="100dp"
-        android:layout_height="150dp"
+        android:layout_height="100dp"
         android:gravity="center"
         android:text="1"
-        android:textColor="@android:color/white"
-        android:textSize="90sp"
+        android:textSize="70sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_main" />
 
     <Button
         android:id="@+id/button_next_set"
-        android:layout_width="312dp"
-        android:layout_height="0dp"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:background="@android:color/white"
         android:text="Next Set"
-        android:textSize="30sp"
+        android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="@+id/text_view_set_number"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/text_view_set_number"
         app:layout_constraintTop_toBottomOf="@+id/edit_text_name_that_exercise"
         app:layout_constraintVertical_bias="0.0" />
@@ -114,7 +111,7 @@
             android:layout_marginBottom="1dp"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"/>
 
     </LinearLayout>
 
@@ -133,10 +130,10 @@
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:paddingStart="8dp"
             android:background="@android:color/white"
             android:ems="10"
             android:inputType="textPersonName"
+            android:paddingStart="8dp"
             android:text="Weight Used" />
 
         <Spinner
@@ -145,7 +142,6 @@
             android:layout_height="match_parent"
             android:layout_weight="3" />
     </LinearLayout>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
